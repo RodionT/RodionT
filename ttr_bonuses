@@ -1,0 +1,40 @@
+ on :deposit, '>0' do
+     issue 'TTR100', group: 'TTR100' do
+       bonus do
+         amount input(:exclusive_promo_amount)
+ 		wager input(:exclusive_promo_wager)
+ 		max input(:exclusive_promo_max)
+ 		min input(:exclusive_promo_min)		
+ 		no_more than: 1, among: 'TTR100', in: 365, period: :day
+ 		available input(:exclusive_promo_availability)
+ 		duration input(:exclusive_promo_duration)
+         code input(:exclusive_promo_code)
+ 		email_template input(:exclusive_promo_email)      
+       
+     end
+   end
+ end
+   on :deposit, '>0' do    
+     issue 'TTRFS50', group: 'TTRFS50' do
+       freespins do 
+ 	    min input(:exclusive_fs_min)
+         games input(:exclusive_fs_games)
+ 		freespins_count input(:exclusive_fs_number)
+ 		freespins_max_win input(:exclusive_fs_count)
+ 		no_more than: 1, among: 'TTRFS50', in: 365, period: :day
+ 		available input(:exclusive_fs_availability)
+ 		duration input(:exclusive_fs_duration)
+ 		activation_duration (:exclusive_fs_activation_duration)
+ 		code input(:exclusive_fs_code)
+         country netent_countries
+         currencies %w(EUR USD RUB)
+ 		email_template input(:exclusive_fs_email)
+ 		
+       freespins_result do
+         wager input(:exclusive_fs_result_wager)
+         duration input(:exclusive_fs_result_duration)
+ 		activation_duration (:exclusive_fs_result_activation_duration)
+         end
+       end
+    end
+ end
